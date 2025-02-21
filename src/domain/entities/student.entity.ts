@@ -16,6 +16,9 @@ export class Student extends Document {
   department: string;
 
   @Prop()
+  role: string;
+
+  @Prop()
   acepted: string;
 }
 

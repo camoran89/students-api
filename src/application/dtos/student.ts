@@ -30,6 +30,13 @@ export class StudentDto {
   department?: string;
 
   @ApiProperty({
+    example: 'Hospital',
+    description: 'Rol con el que ingresa sesión',
+    required: false,
+  })
+  role?: string;
+
+  @ApiProperty({
     example: 'Si',
     description: 'Valor para determinar si un estudiante fue aceptado o no',
     required: false,
