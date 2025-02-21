@@ -10,6 +10,9 @@ export class Student extends Document {
   email: string;
 
   @Prop({ required: true })
+  password: string;
+
+  @Prop({ required: true })
   studentId: string;
 
   @Prop()
@@ -20,6 +23,9 @@ export class Student extends Document {
 
   @Prop()
   acepted: string;
+
+  @Prop()
+  logged: number;
 }
 
 export const StudentSchema = SchemaFactory.createForClass(Student);

@@ -22,6 +22,26 @@ export class StudentRepository {
     return this.studentModel.findOne({ studentId: id }).exec();
   }
 
+  async login(user: string, password: string): Promise<Student | null> {
+    return this.studentModel
+      .findOneAndUpdate(
+        { email: user, password: password },
+        { $set: { logged: 1 } },
+        { new: true }
+      )
+      .exec();
+  }
+
+  async logout(user: string): Promise<Student | null> {
+    return this.studentModel
+      .findOneAndUpdate(
+        { email: user },
+        { $set: { logged: 0 } },
+        { new: true }
+      )
+      .exec();
+  }
+  
   async update(id: string, studentDto: StudentDto): Promise<Student | null> {
     return this.studentModel
       .findOneAndUpdate({ studentId: id }, studentDto, { new: true })

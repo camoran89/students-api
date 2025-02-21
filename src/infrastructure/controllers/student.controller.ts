@@ -11,6 +11,7 @@ import { StudentService } from '../../application/services/student.service';
 import { Student } from '../../domain/entities/student.entity';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { StudentDto } from 'src/application/dtos/student';
+import { LoginDto } from 'src/application/dtos/login';
 
 @ApiTags('students')
 @Controller('students')
@@ -20,8 +21,6 @@ export class StudentController {
   @Post()
   @ApiOperation({ summary: 'Create a new student' })
   async create(@Body() studentDto: StudentDto): Promise<Student> {
-    console.log(studentDto);
-
     return this.studentService.create(studentDto);
   }
 
@@ -35,6 +34,18 @@ export class StudentController {
   @ApiOperation({ summary: 'Get a student by ID' })
   async findOne(@Param('id') id: string): Promise<StudentDto | null> {
     return this.studentService.findOne(id);
+  }
+
+  @Post('login')
+  @ApiOperation({ summary: 'Login' })
+  async login(@Body() loginDto: LoginDto): Promise<StudentDto | null> {
+    return this.studentService.login(loginDto.email, loginDto.password);
+  }
+
+  @Post('logout')
+  @ApiOperation({ summary: 'Logout' })
+  async logout(@Body() user: string): Promise<StudentDto | null> {
+    return this.studentService.logout(user);
   }
 
   @Put(':id')

@@ -23,6 +23,14 @@ export class StudentService {
     return this.studentRepository.findOne(id);
   }
 
+  async login(user: string, password: string): Promise<StudentDto | null> {
+    return this.studentRepository.login(user, password);
+  }
+
+  async logout(user: string): Promise<StudentDto | null> {
+    return this.studentRepository.logout(user);
+  }
+
   async update(id: string, studentDto: StudentDto): Promise<Student | null> {
     return this.studentRepository.update(id, studentDto);
   }

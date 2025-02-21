@@ -42,4 +42,10 @@ export class StudentDto {
     required: false,
   })
   acepted?: string;
+
+  @ApiProperty({
+    example: '1',
+    description: 'Valor para determinar inicio de sesion',
+  })
+  logged?: number;
 }
