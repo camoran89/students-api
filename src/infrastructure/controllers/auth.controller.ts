@@ -17,8 +17,12 @@ export class AuthController {
 
   @Post('hash')
   @ApiOperation({ summary: 'Hash a password' })
-  async hashPassword(@Body() hashDto: LoginDto): Promise<{ hashedPassword: string }> {
-    const hashedPassword = await this.authService.hashPassword(hashDto.password);
+  async hashPassword(
+    @Body() hashDto: LoginDto,
+  ): Promise<{ hashedPassword: string }> {
+    const hashedPassword = await this.authService.hashPassword(
+      hashDto.password,
+    );
     return { hashedPassword };
   }
 }

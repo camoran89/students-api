@@ -6,7 +6,9 @@ import { StudentDto } from '../../application/dtos/student';
 
 @Injectable()
 export class StudentRepository {
-  constructor(@InjectModel(Student.name) private studentModel: Model<Student>) {}
+  constructor(
+    @InjectModel(Student.name) private studentModel: Model<Student>,
+  ) {}
 
   async create(student: StudentDto): Promise<Student> {
     return new this.studentModel(student).save();
@@ -21,7 +23,9 @@ export class StudentRepository {
   }
 
   async update(id: string, studentDto: StudentDto): Promise<Student | null> {
-    return this.studentModel.findOneAndUpdate({ studentId: id }, studentDto, { new: true }).exec();
+    return this.studentModel
+      .findOneAndUpdate({ studentId: id }, studentDto, { new: true })
+      .exec();
   }
 
   async delete(id: string): Promise<Student | null> {

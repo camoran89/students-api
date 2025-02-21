@@ -14,6 +14,9 @@ export class Student extends Document {
 
   @Prop()
   department: string;
+
+  @Prop()
+  acepted: string;
 }
 
 export const StudentSchema = SchemaFactory.createForClass(Student);

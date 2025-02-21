@@ -9,7 +9,10 @@ import { MiddlewareConsumer, NestModule } from '@nestjs/common';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.MONGO_URI || 'mongodb+srv://root:root@studentscluster.ao07s.mongodb.net/?retryWrites=true&w=majority&appName=StudentsCluster'),
+    MongooseModule.forRoot(
+      process.env.MONGO_URI ||
+        'mongodb+srv://root:root@studentscluster.ao07s.mongodb.net/?retryWrites=true&w=majority&appName=StudentsCluster',
+    ),
     StudentsModule,
     AuthModule,
   ],
