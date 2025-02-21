@@ -16,6 +16,13 @@ export class StudentDto {
   email?: string;
 
   @ApiProperty({
+    example: '12345',
+    description: 'Contraseña del estudiante',
+    required: false,
+  })
+  password?: string;
+
+  @ApiProperty({
     example: 'STU12345',
     description: 'ID del estudiante',
     required: false,

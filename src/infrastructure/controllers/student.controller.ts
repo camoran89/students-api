@@ -36,13 +36,14 @@ export class StudentController {
     return this.studentService.findOne(id);
   }
 
-  @Post('login')
+  @Put('login')
   @ApiOperation({ summary: 'Login' })
   async login(@Body() loginDto: LoginDto): Promise<StudentDto | null> {
+    console.log(loginDto)
     return this.studentService.login(loginDto.email, loginDto.password);
   }
 
-  @Post('logout')
+  @Put('logout')
   @ApiOperation({ summary: 'Logout' })
   async logout(@Body() user: string): Promise<StudentDto | null> {
     return this.studentService.logout(user);
