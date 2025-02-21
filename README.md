@@ -51,7 +51,7 @@ Este proyecto es una API desarrollada con **NestJS** que permite la gestión de 
 Crea un archivo `.env` en la raíz con el siguiente contenido:
 
 ```env
-MONGO_URI=mongodb://localhost:27017/students
+MONGO_URI=mongodb+srv://root:root@studentscluster.ao07s.mongodb.net/?retryWrites=true&w=majority&appName=StudentsCluster
 JWT_SECRET=secreto_super_seguro
 PORT=3000
 ```
