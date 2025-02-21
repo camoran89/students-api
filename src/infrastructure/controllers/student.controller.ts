@@ -6,6 +6,8 @@ import {
   Delete,
   Body,
   Param,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { StudentService } from '../../application/services/student.service';
 import { Student } from '../../domain/entities/student.entity';
@@ -36,18 +38,30 @@ export class StudentController {
     return this.studentService.findOne(id);
   }
 
-  @Put('login')
+  @Post('login')
   @ApiOperation({ summary: 'Login' })
-  async login(@Body() loginDto: LoginDto): Promise<StudentDto | null> {
-    console.log(loginDto)
-    return this.studentService.login(loginDto.email, loginDto.password);
-  }
+  async login(@Body() loginDto: LoginDto): Promise<StudentDto | null> {    
+    const student = await this.studentService.login(loginDto.email, loginDto.password);
 
-  @Put('logout')
-  @ApiOperation({ summary: 'Logout' })
-  async logout(@Body() user: string): Promise<StudentDto | null> {
-    return this.studentService.logout(user);
+    if (!student) {
+      throw new HttpException({ message: 'Usuario no encontrado' }, HttpStatus.NOT_FOUND);
+    }
+  
+    return student;
   }
+  
+  @Post('logout')
+  @ApiOperation({ summary: 'Logout' })
+  async logout(@Body() logoutDto: { email: string }): Promise<StudentDto | null> {    
+    const student = await this.studentService.logout(logoutDto.email);
+  
+    if (!student) {
+      throw new HttpException({ message: 'Usuario no encontrado' }, HttpStatus.NOT_FOUND);
+    }
+  
+    return student;
+  }
+  
 
   @Put(':id')
   @ApiOperation({ summary: 'Update a student by ID' })

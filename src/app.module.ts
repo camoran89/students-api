@@ -11,7 +11,7 @@ import { MiddlewareConsumer, NestModule } from '@nestjs/common';
     ConfigModule.forRoot(),
     MongooseModule.forRoot(
       process.env.MONGO_URI ||
-        'mongodb+srv://root:root@studentscluster.ao07s.mongodb.net/?retryWrites=true&w=majority&appName=StudentsCluster',
+        'mongodb+srv://root:root@studentscluster.1ubg9.mongodb.net/?retryWrites=true&w=majority&appName=StudentsCluster',
     ),
     StudentsModule,
     AuthModule,
