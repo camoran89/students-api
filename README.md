@@ -80,7 +80,8 @@ http://localhost:3000/api
 
 - `POST /students` → Crear un nuevo estudiante.
 - `GET /students` → Obtener todos los estudiantes.
-- `GET /students/login` → Inicia sesion.
+- `POST /students/login` → Inicia sesion.
+- `POST /students/logout` → Cierra sesion.
 - `GET /students/:id` → Obtener un estudiante por ID.
 - `PUT /students/:id` → Actualizar un estudiante.
 - `DELETE /students/:id` → Eliminar un estudiante.
